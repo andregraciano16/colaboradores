@@ -3,11 +3,15 @@ package com.empresa.colaboradores.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@EqualsAndHashCode
 public class ColaboradorRequest {
 
 	@NotEmpty(message = "{mensagem.validacao.nome.obrigatorio}")

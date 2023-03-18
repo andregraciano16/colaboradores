@@ -33,7 +33,7 @@ public class ColaboradorController {
 	
 	@PostMapping
 	public ResponseEntity<Colaborador> cadastrar(@RequestBody @Valid ColaboradorRequest request) {
-		return ResponseEntity.status(HttpStatus.OK).body(colaboradorService.cadastrar(request));
+		return ResponseEntity.status(HttpStatus.CREATED).body(colaboradorService.cadastrar(request));
 	}
 
 	@DeleteMapping("/{id}")
