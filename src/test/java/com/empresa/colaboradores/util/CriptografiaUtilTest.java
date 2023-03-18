@@ -1,10 +1,8 @@
-package com.empresa.colaboradores;
+package com.empresa.colaboradores.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import com.empresa.colaboradores.util.CriptografiaUtil;
 
 public class CriptografiaUtilTest {
 	
