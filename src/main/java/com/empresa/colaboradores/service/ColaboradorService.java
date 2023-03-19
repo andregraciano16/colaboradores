@@ -1,6 +1,7 @@
 package com.empresa.colaboradores.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -19,19 +20,28 @@ public class ColaboradorService {
 	private ColaboradorRepository colaboradorRepository;
 	
 	public Colaborador cadastrar(ColaboradorRequest request) {
-		Colaborador lider = colaboradorRepository.findById(request.getIdLider()).orElseThrow(() -> new EntityNotFoundException("Não foi encontrado lider com ID" + request.getIdLider()));
 		Colaborador colaborador = Colaborador.builder()
 				.nome(request.getNome())
 				.senha(CriptografiaUtil.criptografar(request.getSenha()))
 				.percentual(1)
 				.build();
-		lider.getSubordinados().add(colaborador);
-		colaboradorRepository.save(lider);
-		return colaborador;
+		Colaborador cadastrado = colaboradorRepository.save(colaborador);
+		this.vincularComLider(request.getIdLider(), cadastrado);
+		return cadastrado;
+	}
+	
+	private void vincularComLider(Integer idLider, Colaborador colaborador) {
+		if (idLider != null) {
+        	Optional<Colaborador> lider = colaboradorRepository.findById(idLider);
+        	lider.ifPresent(s -> {
+        		s.getSubordinados().add(colaborador);
+        		colaboradorRepository.save(s);
+        	});
+        }
 	}
 
 	public void deletar(Integer codigo) {
-		colaboradorRepository.deleteById(codigo);
+		colaboradorRepository.deleteById(codigo);			
 	}
 	
 	public List<Colaborador> consultar() {
