@@ -41,11 +41,11 @@ public class Colaborador {
 	@Column(name = "senha", nullable = false)
 	private String senha;
 	
-	@Column(name = "percentual", length = 3, nullable = false)
-	private Integer percentual;
+	@Column(name = "score", length = 3, nullable = false)
+	private Integer score;
 	
 	@Getter(AccessLevel.NONE)
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Colaborador> subordinados;
 	
 	public List<Colaborador> getSubordinados() {

@@ -31,7 +31,7 @@ import com.empresa.colaboradores.service.ColaboradorService;
 @WebMvcTest(ColaboradorController.class)
 public class ColaboradorControllerTest {
 
-	private static final String URL_SERVICO = "/colaborador";
+	private static final String URL_SERVICO = "/colaboradores";
 	
 	@Autowired
 	private MockMvc mvc;
@@ -57,7 +57,7 @@ public class ColaboradorControllerTest {
 	@BeforeAll
 	public static void carregarDados() {
 		colaboradorRequest = ColaboradorRequest.builder().nome("Maria da Silva").senha("123456").build();
-		colaborador = Colaborador.builder().id(1).nome("Maria da Silva").senha("123456").percentual(null).subordinados(null).build();
+		colaborador = Colaborador.builder().id(1).nome("Maria da Silva").senha("123456").score(null).subordinados(null).build();
 	}
 	
 	@Test 
