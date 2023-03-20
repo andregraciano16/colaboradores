@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "16d71383-d297-4135-9bab-3ff6504670c9",
+		"name": "Empresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5136956"
+	},
+	"item": [
+		{
+			"name": "Consulta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/colaboradores",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"colaboradores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"andre2\",\r\n    \"senha\": \"1234567\",\r\n    \"idLider\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/colaboradores",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"colaboradores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"andre3\",\r\n    \"senha\": \"1234567\",\r\n    \"idLider\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/colaboradores/3",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"colaboradores",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/colaboradores/3",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"colaboradores",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
