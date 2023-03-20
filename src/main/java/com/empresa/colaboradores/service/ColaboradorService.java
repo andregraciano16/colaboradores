@@ -12,6 +12,7 @@ import com.empresa.colaboradores.dto.ColaboradorRequest;
 import com.empresa.colaboradores.entity.Colaborador;
 import com.empresa.colaboradores.repository.ColaboradorRepository;
 import com.empresa.colaboradores.util.CriptografiaUtil;
+import com.empresa.colaboradores.util.GeradorScore;
 
 @Service
 public class ColaboradorService {
@@ -23,7 +24,7 @@ public class ColaboradorService {
 		Colaborador colaborador = Colaborador.builder()
 				.nome(request.getNome())
 				.senha(CriptografiaUtil.criptografar(request.getSenha()))
-				.percentual(1)
+				.score(GeradorScore.gerar(request.getSenha()))
 				.build();
 		Colaborador cadastrado = colaboradorRepository.save(colaborador);
 		this.vincularComLider(request.getIdLider(), cadastrado);
@@ -51,6 +52,7 @@ public class ColaboradorService {
 	public Colaborador atualizar(ColaboradorRequest request, Integer id) {
 		Colaborador colaborador = colaboradorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não foi encontrado colaborador com ID" + id));
 		colaborador.setNome(request.getNome());
+		colaborador.setScore(GeradorScore.gerar(request.getSenha()));
 		colaborador.setSenha(CriptografiaUtil.criptografar(request.getSenha()));
 		return colaboradorRepository.save(colaborador);					
 	}
